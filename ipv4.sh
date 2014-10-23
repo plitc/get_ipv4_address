@@ -221,6 +221,8 @@ echo "<--- --- --- --- --- --- --- --- --->"
 CLASSCTEST=$(grep "192.168" $GETIPV4 | wc -l | sed 's/ //g')
 CLASSBTEST=$(grep "172.16" $GETIPV4 | wc -l | sed 's/ //g')
 CLASSATEST=$(grep "10." $GETIPV4 | wc -l | sed 's/ //g')
+#
+CLASSDN42ATEST=$(grep "172.22" $GETIPV4 | wc -l | sed 's/ //g')
 
 if [ $CLASSCTEST = 0 ]; then
    echo "ERROR: can't find class C network, try again ..."
@@ -234,17 +236,23 @@ if [ $CLASSCTEST = 0 ]; then
          echo "ERROR: can't find class A network, try again ..."
          echo "<--- --- --->"
 ### ### ###
-            echo 'ERROR: no RFC1918 networks found'
+            echo 'ERROR: no RFC1918 networks found, try dn42 ...'
             # exit 1
+            echo "<--- --- --->"
 ### ### ### DN42a // ### ### ###
-#
+               if [ $CLASSDN42ATEST = 0 ]; then
+                  echo "ERROR: ... doesn't work ..."
+                  echo "<--- --- --->"
+### ### ### ### ### ###
+               else
+                  echo 'looks like ... DN42 A network'
 # <--- --- --- --- --- --- --- --- ---//
-   CLASSDN42ANET=$(cat $GETIPV4 | sort | uniq | head -n 1 | cut -c 1-11 | xargs -L1 -I {} echo {}.0/24)
+   CLASSDN42ANET=$(cat $GETIPV4 | sort | uniq | head -n 1 | cut -c 1-9 | xargs -L1 -I {} echo {}.0/24)
    # /usr/local/bin/arpdig -i $GETIPV4IFVALUE $CLASSDN42ANET
    /usr/local/bin/arpdig -i $GETIPV4IFVALUE $CLASSDN42ANET > $GETIPV4ARPDIG
-   CLASSDN42APRE=$(cat $GETIPV4 | sort | uniq | head -n 1 | cut -c 1-11)
+   CLASSDN42APRE=$(cat $GETIPV4 | sort | uniq | head -n 1 | cut -c 1-9)
    GETIPV4CURRDN42A=$(cat $GETIPV4ARPDIG | sed '/Digging/d' | awk '{print $1}')
-   netdn42a1=$CLASSDN42APRE; idn42a1=1; GETIPV4FULLDN42A=`while [ $idn42a1 -lt 255 ]; do echo $netdn42a1.$idn42a1; idn42a1=$(($idn42a1+1)); done`
+   netdn42a=$CLASSDN42APRE; idn42a=1; GETIPV4FULLDN42A=`while [ $idn42a -lt 255 ]; do echo $netdn42a.$idn42a; idn42a=$(($idn42a+1)); done`
    echo $GETIPV4CURRDN42A > $GETIPV4CURRDN42ALIST
    echo $GETIPV4FULLDN42A > $GETIPV4FULLDN42ALIST
    tr ' ' '\n' < $GETIPV4CURRDN42ALIST > $GETIPV4CURRDN42ALISTL
@@ -256,15 +264,15 @@ if [ $CLASSCTEST = 0 ]; then
    SETDN42AIP=$(cat /tmp/get_ipv4_address_menudn42a_ip.log | awk '{print $2}')
    dialog --menu "IP function:" 10 10 10 1 new 2 alias 2>$GETIPV4MENUDN42AIPFUNC
    GETIPV4MENUDN42AIPFUNCN=$(cat $GETIPV4MENUDN42AIPFUNC | sed 's/#//g' | sed 's/%//g')
-   if [ $GETIPV4MENUCIPFUNCN = 1 ]; then
+   if [ $GETIPV4MENUDN42AIPFUNCN = 1 ]; then
 #      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
 #      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
 #      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
 #      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
       ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-      ifconfig $GETIPV4IFVALUE inet $SETCIP/24
+      ifconfig $GETIPV4IFVALUE inet $SETDN42AIP/24
    else
-      ifconfig $GETIPV4IFVALUE inet $SETCIP/24 alias
+      ifconfig $GETIPV4IFVALUE inet $SETDN42AIP/24 alias
    fi
 ### ### ### ### ### ### ### ### ###
 NEWDN42AIP=$(ifconfig $GETIPV4IFVALUE | grep --color $SETDN42AIP)
@@ -276,7 +284,7 @@ echo "Your new IP: $NEWDN42AIP"
 # <// --- --- --- --- --- --- --- --- ---
 #
 ### ### ### // DN42a ### ### ###
-#
+               fi
 ### ### ###
       else
          echo 'looks like ... class A network'
