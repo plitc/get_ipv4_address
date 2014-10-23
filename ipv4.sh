@@ -38,6 +38,12 @@ MYNAME=$(whoami)
 #
 GETIPV4="/tmp/get_ipv4_address.log"
 touch $GETIPV4
+GETIPV4ROUTER="/tmp/get_ipv4_router.log"
+touch $GETIPV4ROUTER
+GETIPV4ROUTERLIST="/tmp/get_ipv4_router_list.log"
+touch $GETIPV4ROUTERLIST
+GETIPV4ROUTERLISTMENU="/tmp/get_ipv4_router_list_menu.log"
+touch $GETIPV4ROUTERLISTMENU
 GETIPV4ARPDIG="/tmp/get_ipv4_address_arpdig.log"
 touch $GETIPV4ARPDIG
 #
@@ -405,6 +411,34 @@ echo "Your new IP: $NEWCIP"
 ### ### ### ### ### ### ### ### ###
 # <// --- --- --- --- --- --- --- --- ---
 fi
+
+### stage5 // ###
+
+# <--- --- --- --- ROUTER // --- --- --- ---//
+
+   echo ""
+   echo "<--- ROUTER tcpdump preview // --->"
+   echo ""
+   /usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 55 | grep --color "OSPFv2"
+   echo ""
+   echo "<--- // ROUTER tcpdump preview --->"
+   echo ""
+   /usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 55 | grep --color "OSPFv2" | awk '{print $10}' 2>&1 > $GETIPV4ROUTER
+   echo ""
+
+   nl $GETIPV4ROUTER | sed 's/ //g' > $GETIPV4ROUTERLIST
+   dialog --menu "Choose one default Router:" 10 30 40 `cat $GETIPV4ROUTERLIST` 2>$GETIPV4ROUTERLISTMENU
+   /usr/local/bin/zsh -c "join <(sort /tmp/get_ipv4_router_list.log) <(sort /tmp/get_ipv4_router_list_menu.log) > /tmp/get_ipv4_router_list_menu_choosed.log"
+   SETROUTERIP=$(cat /tmp/get_ipv4_router_list_menu_choosed.log | awk '{print $2}')
+
+   echo "<--- set default router // --->"
+   route del -inet default
+   route add -inet default $SETROUTERIP -ifp $GETIPV4IFVALUE
+   echo "<--- // set default router --->"
+
+# <--- --- --- --- // ROUTER --- --- --- ---//
+
+### // stage5 ###
 
 ###
 rm -rf /tmp/get_ipv4*
