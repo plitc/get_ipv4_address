@@ -651,20 +651,20 @@ Debian)
 DEBMYNAME=$(whoami)
 
 ### stage2 // ###
-rm -rf /tmp/get_ipv4* 2>&1 > /dev/null
+rm -rf /tmp/get_ipv4*
 #
 GETIPV4="/tmp/get_ipv4_address.log"
-touch $GETIPV4 2>&1 > /dev/null
+touch $GETIPV4
 GETIPV4ROUTER="/tmp/get_ipv4_router.log"
-touch $GETIPV4ROUTER 2>&1 > /dev/null
+touch $GETIPV4ROUTER
 GETIPV4ROUTERLIST="/tmp/get_ipv4_router_list.log"
-touch $GETIPV4ROUTERLIST 2>&1 > /dev/null
+touch $GETIPV4ROUTERLIST
 GETIPV4ROUTERLISTMENU="/tmp/get_ipv4_router_list_menu.log"
-touch $GETIPV4ROUTERLISTMENU 2>&1 > /dev/null
+touch $GETIPV4ROUTERLISTMENU
 GETIPV4DNSLIST="/tmp/get_ipv4_dnslist.log"
-touch $GETIPV4DNSLIST 2>&1 > /dev/null
+touch $GETIPV4DNSLIST
 GETIPV4ARPDIG="/tmp/get_ipv4_address_arpdig.log"
-touch $GETIPV4ARPDIG 2>&1 > /dev/null
+touch $GETIPV4ARPDIG
 #
 ARPING=$(/usr/bin/which arping)
 #ARPDIG=$(/usr/bin/which arpdig)
@@ -674,86 +674,86 @@ IFCONFIG=$(/usr/bin/which ifconfig)
 #
 ## DN42a // ##
 GETIPV4CURRDN42ALIST="/tmp/get_ipv4_address_currdn42a.log"
-touch $GETIPV4CURRDN42ALIST 2>&1 > /dev/null
+touch $GETIPV4CURRDN42ALIST
 GETIPV4FULLDN42ALIST="/tmp/get_ipv4_address_fulldn42a.log"
-touch $GETIPV4FULLDN42ALIST 2>&1 > /dev/null
+touch $GETIPV4FULLDN42ALIST
 GETIPV4CURRDN42ALISTL="/tmp/get_ipv4_address_currdn42a_l.log"
-touch $GETIPV4CURRDN42ALISTL 2>&1 > /dev/null
+touch $GETIPV4CURRDN42ALISTL
 GETIPV4FULLDN42ALISTL="/tmp/get_ipv4_address_fulldn42a_l.log"
-touch $GETIPV4FULLDN42ALISTL 2>&1 > /dev/null
+touch $GETIPV4FULLDN42ALISTL
 GETIPV4SORTDN42ALISTL="/tmp/get_ipv4_address_sortdn42a.log"
-touch $GETIPV4SORTDN42ALISTL 2>&1 > /dev/null
+touch $GETIPV4SORTDN42ALISTL
 GETIPV4MENUDN42A="/tmp/get_ipv4_address_menudn42a.log"
-touch $GETIPV4MENUDN42A 2>&1 > /dev/null
+touch $GETIPV4MENUDN42A
 GETIPV4MENUDN42ALIST="/tmp/get_ipv4_address_menudn42alist.log"
-touch $GETIPV4MENUDN42ALIST 2>&1 > /dev/null
+touch $GETIPV4MENUDN42ALIST
 GETIPV4MENUDN42ALISTIP="/tmp/get_ipv4_address_menudn42a_ip.log"
-touch $GETIPV4MENUDN42ALISTIP 2>&1 > /dev/null
+touch $GETIPV4MENUDN42ALISTIP
 GETIPV4MENUDN42AIPFUNC="/tmp/get_ipv4_address_menudn42a_ipfunc.log"
-touch $GETIPV4MENUDN42AIPFUNC 2>&1 > /dev/null
+touch $GETIPV4MENUDN42AIPFUNC
 ## // DN42a ##
 #
 ## Class A // ##
 GETIPV4CURRALIST="/tmp/get_ipv4_address_curra.log"
-touch $GETIPV4CURRALIST 2>&1 > /dev/null
+touch $GETIPV4CURRALIST
 GETIPV4FULLALIST="/tmp/get_ipv4_address_fulla.log"
-touch $GETIPV4FULLALIST 2>&1 > /dev/null
+touch $GETIPV4FULLALIST
 GETIPV4CURRALISTL="/tmp/get_ipv4_address_curra_l.log"
-touch $GETIPV4CURRALISTL 2>&1 > /dev/null
+touch $GETIPV4CURRALISTL
 GETIPV4FULLALISTL="/tmp/get_ipv4_address_fulla_l.log"
-touch $GETIPV4FULLALISTL 2>&1 > /dev/null
+touch $GETIPV4FULLALISTL
 GETIPV4SORTALISTL="/tmp/get_ipv4_address_sorta.log"
-touch $GETIPV4SORTALISTL 2>&1 > /dev/null
+touch $GETIPV4SORTALISTL
 GETIPV4MENUA="/tmp/get_ipv4_address_menua.log"
-touch $GETIPV4MENUA 2>&1 > /dev/null
+touch $GETIPV4MENUA
 GETIPV4MENUALIST="/tmp/get_ipv4_address_menualist.log"
-touch $GETIPV4MENUALIST 2>&1 > /dev/null
+touch $GETIPV4MENUALIST
 GETIPV4MENUALISTIP="/tmp/get_ipv4_address_menua_ip.log"
-touch $GETIPV4MENUALISTIP 2>&1 > /dev/null
+touch $GETIPV4MENUALISTIP
 GETIPV4MENUAIPFUNC="/tmp/get_ipv4_address_menua_ipfunc.log"
-touch $GETIPV4MENUAIPFUNC 2>&1 > /dev/null
+touch $GETIPV4MENUAIPFUNC
 ## // Class A ##
 #
 ## Class B // ##
 GETIPV4CURRBLIST="/tmp/get_ipv4_address_currb.log"
-touch $GETIPV4CURRBLIST 2>&1 > /dev/null
+touch $GETIPV4CURRBLIST
 GETIPV4FULLBLIST="/tmp/get_ipv4_address_fullb.log"
-touch $GETIPV4FULLBLIST 2>&1 > /dev/null
+touch $GETIPV4FULLBLIST
 GETIPV4CURRBLISTL="/tmp/get_ipv4_address_currb_l.log"
-touch $GETIPV4CURRBLISTL 2>&1 > /dev/null
+touch $GETIPV4CURRBLISTL
 GETIPV4FULLBLISTL="/tmp/get_ipv4_address_fullb_l.log"
-touch $GETIPV4FULLBLISTL 2>&1 > /dev/null
+touch $GETIPV4FULLBLISTL
 GETIPV4SORTBLISTL="/tmp/get_ipv4_address_sortb.log"
-touch $GETIPV4SORTBLISTL 2>&1 > /dev/null
+touch $GETIPV4SORTBLISTL
 GETIPV4MENUB="/tmp/get_ipv4_address_menub.log"
-touch $GETIPV4MENUB 2>&1 > /dev/null
+touch $GETIPV4MENUB
 GETIPV4MENUBLIST="/tmp/get_ipv4_address_menublist.log"
-touch $GETIPV4MENUBLIST 2>&1 > /dev/null
+touch $GETIPV4MENUBLIST
 GETIPV4MENUBLISTIP="/tmp/get_ipv4_address_menub_ip.log"
-touch $GETIPV4MENUBLISTIP 2>&1 > /dev/null
+touch $GETIPV4MENUBLISTIP
 GETIPV4MENUBIPFUNC="/tmp/get_ipv4_address_menub_ipfunc.log"
-touch $GETIPV4MENUBIPFUNC 2>&1 > /dev/null
+touch $GETIPV4MENUBIPFUNC
 ## // Class B ##
 #
 ## Class C // ##
 GETIPV4CURRCLIST="/tmp/get_ipv4_address_currc.log"
-touch $GETIPV4CURRCLIST 2>&1 > /dev/null
+touch $GETIPV4CURRCLIST
 GETIPV4FULLCLIST="/tmp/get_ipv4_address_fullc.log"
-touch $GETIPV4FULLCLIST 2>&1 > /dev/null
+touch $GETIPV4FULLCLIST
 GETIPV4CURRCLISTL="/tmp/get_ipv4_address_currc_l.log"
-touch $GETIPV4CURRCLISTL 2>&1 > /dev/null
+touch $GETIPV4CURRCLISTL
 GETIPV4FULLCLISTL="/tmp/get_ipv4_address_fullc_l.log"
-touch $GETIPV4FULLCLISTL 2>&1 > /dev/null
+touch $GETIPV4FULLCLISTL
 GETIPV4SORTCLISTL="/tmp/get_ipv4_address_sortc.log"
-touch $GETIPV4SORTCLISTL 2>&1 > /dev/null
+touch $GETIPV4SORTCLISTL
 GETIPV4MENUC="/tmp/get_ipv4_address_menuc.log"
-touch $GETIPV4MENUC 2>&1 > /dev/null
+touch $GETIPV4MENUC
 GETIPV4MENUCLIST="/tmp/get_ipv4_address_menuclist.log"
-touch $GETIPV4MENUCLIST 2>&1 > /dev/null
+touch $GETIPV4MENUCLIST
 GETIPV4MENUCLISTIP="/tmp/get_ipv4_address_menuc_ip.log"
-touch $GETIPV4MENUCLISTIP 2>&1 > /dev/null
+touch $GETIPV4MENUCLISTIP
 GETIPV4MENUCIPFUNC="/tmp/get_ipv4_address_menuc_ipfunc.log"
-touch $GETIPV4MENUCIPFUNC 2>&1 > /dev/null
+touch $GETIPV4MENUCIPFUNC
 ## // Class C ##
 #
 ### // stage2 ###
@@ -1062,6 +1062,8 @@ echo "Your new IP: $NEWCIP"
 # <// --- --- --- --- --- --- --- --- ---
 fi
 
+### // stage5 ###
+
 ### stage6 // ###
 
 # <--- --- --- --- ROUTER // --- --- --- ---//
@@ -1106,9 +1108,9 @@ done
 
 # <--- --- --- --- // ROUTER --- --- --- ---//
 
-### // stage5 ###
+### // stage6 ###
 
-### stage6 // ###
+### stage7 // ###
 
 # <--- --- --- --- DNS Resolver // --- --- --- ---//
 
@@ -1207,9 +1209,9 @@ cp -f /tmp/get_ipv4_resolv.conf /etc/resolv.conf
 
 # <--- --- --- --- // DNS Resolver --- --- --- ---//
 
-### // stage6 ###
+### // stage7 ###
 
-### stage7 // ###
+### stage8 // ###
 
 # <--- --- --- --- INFO Box // --- --- --- ---//
 
@@ -1235,7 +1237,7 @@ dialog --textbox "$GETIPV4INFO" 0 0
 
 # <--- --- --- --- // INFO Box --- --- --- ---//
 
-### // stage7 ###
+### // stage8 ###
 
 ###
 #rm -rf /tmp/get_ipv4*
