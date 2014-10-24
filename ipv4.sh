@@ -219,7 +219,7 @@ fi
    #/usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 25 | grep --color 0x0800
    #echo ""
    #echo "<--- // tcpdump preview --->"
-   #echo ""
+   echo ""
    (/usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 25 | grep --color 0x0800 | awk '{print $10}' 2>&1 > $GETIPV4) &&
    #echo ""
 
@@ -438,7 +438,7 @@ fi
    #/usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 55 | grep --color "OSPFv2"
    #echo ""
    #echo "<--- // ROUTER tcpdump preview --->"
-   #echo ""
+   echo ""
    (/usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 55 | grep --color "OSPFv2" | awk '{print $10}' 2>&1 > $GETIPV4ROUTER) &&
    #echo ""
 
@@ -570,6 +570,34 @@ cp -f /tmp/get_ipv4_resolv.conf /etc/resolv.conf
 # <--- --- --- --- // DNS Resolver --- --- --- ---//
 
 ### // stage6 ###
+
+### stage7 // ###
+
+# <--- --- --- --- INFO Box // --- --- --- ---//
+
+clear
+
+GETIPV4INFO="/tmp/get_ipv4_info.log"
+
+   echo "" > $GETIPV4INFO
+   echo "<--- --- --- INTERFACE --- --- --->" >> $GETIPV4INFO
+   echo "" >> $GETIPV4INFO
+   ifconfig $GETIPV4IFVALUE >> $GETIPV4INFO
+   echo "" >> $GETIPV4INFO
+   echo "<--- --- --- Default v4 Gateway --- --- --->" >> $GETIPV4INFO
+   echo "" >> $GETIPV4INFO
+   route show default >> $GETIPV4INFO
+   echo "" >> $GETIPV4INFO
+   echo "<--- --- --- /etc/resolv.conf --- --- --->" >> $GETIPV4INFO
+   echo "" >> $GETIPV4INFO
+   cat /etc/resolv.conf >> $GETIPV4INFO
+   echo "" >> $GETIPV4INFO
+
+dialog --textbox "$GETIPV4INFO" 0 0
+
+# <--- --- --- --- // INFO Box --- --- --- ---//
+
+### // stage7 ###
 
 ###
 rm -rf /tmp/get_ipv4*
