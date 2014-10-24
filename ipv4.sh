@@ -834,7 +834,7 @@ if [ -z $ARPING ]; then
    echo "<--- --- --->"
    echo "need arping"
    echo "<--- --- --->"
-   apt-get install arping
+   apt-get install -y arping
    cd -
    echo "<--- --- --->"
 else
@@ -856,7 +856,7 @@ if [ -z $DIALOG ]; then
    echo "<--- --- --->"
    echo "need dialog"
    echo "<--- --- --->"
-   apt-get install dialog
+   apt-get install -y dialog
    cd -
    echo "<--- --- --->"
 else
@@ -867,7 +867,7 @@ if [ -z $ZSH ]; then
    echo "<--- --- --->"
    echo "need zsh shell"
    echo "<--- --- --->"
-   apt-get install zsh
+   apt-get install -y zsh
    cd -
    echo "<--- --- --->"
 else
