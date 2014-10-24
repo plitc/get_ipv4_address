@@ -595,7 +595,7 @@ cp -f /tmp/get_ipv4_resolv.conf /etc/resolv.conf
 
 # <--- --- --- --- INFO Box // --- --- --- ---//
 
-clear
+#clear
 
 GETIPV4INFO="/tmp/get_ipv4_info.log"
 
@@ -1219,7 +1219,7 @@ cp -f /tmp/get_ipv4_resolv.conf /etc/resolv.conf
 
 # <--- --- --- --- INFO Box // --- --- --- ---//
 
-clear
+#clear
 
 GETIPV4INFO="/tmp/get_ipv4_info.log"
 
