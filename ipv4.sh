@@ -620,7 +620,7 @@ dialog --textbox "$GETIPV4INFO" 0 0
 ### // stage7 ###
 
 ###
-#rm -rf /tmp/get_ipv4*
+rm -rf /tmp/get_ipv4*
 ### // stage4 ###
 
 ### // stage1 ###
@@ -1240,7 +1240,7 @@ dialog --textbox "$GETIPV4INFO" 0 0
 ### // stage8 ###
 
 ###
-#rm -rf /tmp/get_ipv4*
+rm -rf /tmp/get_ipv4*
 ### // stage4 ###
 
 
