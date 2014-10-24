@@ -439,7 +439,7 @@ fi
    #echo ""
    #echo "<--- // ROUTER tcpdump preview --->"
    echo ""
-   (/usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 55 | grep --color "OSPFv2" | awk '{print $10}' 2>&1 > $GETIPV4ROUTER) &&
+   (/usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 55 | grep --color "OSPFv2" | awk '{print $10}' | sort | uniq 2>&1 > $GETIPV4ROUTER) &&
    #echo ""
 
 TCPDUMP2=10
