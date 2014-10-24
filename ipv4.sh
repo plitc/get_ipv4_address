@@ -834,29 +834,29 @@ if [ -z $ARPING ]; then
    echo "<--- --- --->"
    echo "need arping"
    echo "<--- --- --->"
-   cd /usr/ports/net/arping/ && make install clean
+   apt-get install arping
    cd -
    echo "<--- --- --->"
 else
    echo "" # dummy
 fi
 
-if [ -z $ARPDIG ]; then
-   echo "<--- --- --->"
-   echo "need arpdig"
-   echo "<--- --- --->"
-   cd /usr/ports/net/arpdig/ && make install clean
-   cd -
-   echo "<--- --- --->"
-else
-   echo "" # dummy
-fi
+#if [ -z $ARPDIG ]; then
+#   echo "<--- --- --->"
+#   echo "need arpdig"
+#   echo "<--- --- --->"
+#   ### ### ###
+#   cd -
+#   echo "<--- --- --->"
+#else
+#   echo "" # dummy
+#fi
 
 if [ -z $DIALOG ]; then
    echo "<--- --- --->"
    echo "need dialog"
    echo "<--- --- --->"
-   cd /usr/ports/ports-mgmt/dialog4ports/ && make install clean
+   apt-get install dialog
    cd -
    echo "<--- --- --->"
 else
@@ -867,16 +867,16 @@ if [ -z $ZSH ]; then
    echo "<--- --- --->"
    echo "need zsh shell"
    echo "<--- --- --->"
-   cd /usr/ports/shells/zsh/ && make install clean
+   apt-get install zsh
    cd -
    echo "<--- --- --->"
 else
    echo "" # dummy
 fi
-### // stage2 ###
+### // stage3 ###
 
 
-### stage3 // ###
+### stage4 // ###
 #
 GETIPV4IF="/tmp/get_ipv4_address_if.log"
 touch $GETIPV4IF
