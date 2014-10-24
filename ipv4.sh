@@ -667,7 +667,7 @@ GETIPV4ARPDIG="/tmp/get_ipv4_address_arpdig.log"
 touch $GETIPV4ARPDIG
 #
 ARPING=$(/usr/bin/which arping)
-#ARPDIG=$(/usr/bin/which arpdig)
+ARPSCAN=$(/usr/bin/which arp-scan)
 DIALOG=$(/usr/bin/which dialog)
 ZSH=$(/usr/bin/which zsh)
 IFCONFIG=$(/usr/bin/which ifconfig)
@@ -780,16 +780,16 @@ else
    echo "" # dummy
 fi
 
-#if [ -z $ARPDIG ]; then
-#   echo "<--- --- --->"
-#   echo "need arpdig"
-#   echo "<--- --- --->"
-#   ### ### ###
-#   cd -
-#   echo "<--- --- --->"
-#else
-#   echo "" # dummy
-#fi
+if [ -z $ARPSCAN ]; then
+   echo "<--- --- --->"
+   echo "need arp-scan"
+   echo "<--- --- --->"
+   apt-get install -y arp-scan
+   cd -
+   echo "<--- --- --->"
+else
+   echo "" # dummy
+fi
 
 if [ -z $DIALOG ]; then
    echo "<--- --- --->"

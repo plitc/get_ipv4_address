@@ -7,7 +7,8 @@ Dependencies
 ============
 * ifconfig
 * arping
-* arpdig
+* arpdig     (FreeBSD)
+* arp-scan   (Linux)
 * zsh
 * dialog
 
