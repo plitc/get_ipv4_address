@@ -650,6 +650,33 @@ Linux)
    ### Linux ###
 ### ### ### ### ### ### ### ### ###
 
+### stage1 // ###
+#
+DISTRO=$(uname -a)
+DEBIAN=$(uname -a | awk '{print $6}')
+#
+### // stage1 ###
+
+case $DEBIAN in
+Debian)
+   ### Debian ###
+### ### ### ### ### ### ### ### ###
+
+echo "debian"
+
+### ### ### ### ### ### ### ### ###
+   ;;
+*)
+   # error 1
+   echo "<--- --- --->"
+   echo ""
+   echo "ERROR: Plattform = unknown"
+   exit 1
+   ;;
+esac
+### // stage1 ###
+
+
 ### ### ### ### ### ### ### ### ###
    ;;
 *)
