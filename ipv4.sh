@@ -44,6 +44,8 @@ GETIPV4ROUTERLIST="/tmp/get_ipv4_router_list.log"
 touch $GETIPV4ROUTERLIST
 GETIPV4ROUTERLISTMENU="/tmp/get_ipv4_router_list_menu.log"
 touch $GETIPV4ROUTERLISTMENU
+GETIPV4DNSLIST="/tmp/get_ipv4_dnslist.log"
+touch $GETIPV4DNSLIST
 GETIPV4ARPDIG="/tmp/get_ipv4_address_arpdig.log"
 touch $GETIPV4ARPDIG
 #
@@ -439,6 +441,107 @@ fi
 # <--- --- --- --- // ROUTER --- --- --- ---//
 
 ### // stage5 ###
+
+### stage6 // ###
+
+# <--- --- --- --- DNS Resolver // --- --- --- ---//
+
+   dialog --checklist "Select fanncy Public DNS Resolver:" 30 75 12 \
+      1 "46.4.163.36    (plitc-public-dns-a.de.plitc.eu / germany only)" off\
+      2 "46.4.163.37    (plitc-public-dns-b.de.plitc.eu / germany only)" off\
+      3 "46.4.163.38    (plitc-public-dns-c.de.plitc.eu / germany only)" off\
+      4 "213.73.19.35   (dnscache.berlin.ccc.de)" on\
+      5 "74.82.42.42    (ordns.he.net)" on\
+      6 "208.67.222.222 (resolver1.opendns.com)" off\
+      7 "208.67.220.220 (resolver2.opendns.com)" off\
+      8 "8.8.8.8        (google-public-dns-a.google.com)" off\
+      9 "8.8.4.4        (google-public-dns-b.google.com)" off\
+       2>$GETIPV4DNSLIST
+
+   echo "<--- prepare /etc/resolv.conf // --->"
+
+cat << DNSEOF > /tmp/get_ipv4_resolv.conf
+### ### ### GET_IPv4 // ### ### ###
+#
+DNSEOF
+
+GETIPV4DNSLISTCHECK1=$(grep "1" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
+if [ -z $GETIPV4DNSLISTCHECK1 ]; then
+   #
+   else
+   echo "nameserver 46.4.163.36     # (plitc-public-dns-a.de.plitc.eu / germany only)" >> /tmp/get_ipv4_resolv.conf
+fi
+
+GETIPV4DNSLISTCHECK2=$(grep "2" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
+if [ -z $GETIPV4DNSLISTCHECK2 ]; then
+   #
+   else
+   echo "nameserver 46.4.163.37     # (plitc-public-dns-b.de.plitc.eu / germany only)" >> /tmp/get_ipv4_resolv.conf
+fi
+
+GETIPV4DNSLISTCHECK3=$(grep "3" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
+if [ -z $GETIPV4DNSLISTCHECK3 ]; then
+   #
+   else
+   echo "nameserver 46.4.163.38     # (plitc-public-dns-c.de.plitc.eu / germany only)" >> /tmp/get_ipv4_resolv.conf
+fi
+
+GETIPV4DNSLISTCHECK4=$(grep "4" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
+if [ -z $GETIPV4DNSLISTCHECK4 ]; then
+   #
+   else
+   echo "nameserver 213.73.91.35    # (dnscache.berlin.ccc.de)" >> /tmp/get_ipv4_resolv.conf
+fi
+
+GETIPV4DNSLISTCHECK5=$(grep "5" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
+if [ -z $GETIPV4DNSLISTCHECK5 ]; then
+   #
+   else
+   echo "nameserver 74.82.42.42     # (ordns.he.net)" >> /tmp/get_ipv4_resolv.conf
+fi
+
+GETIPV4DNSLISTCHECK6=$(grep "6" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
+if [ -z $GETIPV4DNSLISTCHECK6 ]; then
+   #
+   else
+   echo "nameserver 208.67.222.222  # (resolver1.opendns.com)" >> /tmp/get_ipv4_resolv.conf
+fi
+
+GETIPV4DNSLISTCHECK7=$(grep "7" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
+if [ -z $GETIPV4DNSLISTCHECK7 ]; then
+   #
+   else
+   echo "nameserver 208.67.220.220  # (resolver2.opendns.com)" >> /tmp/get_ipv4_resolv.conf
+fi
+
+GETIPV4DNSLISTCHECK8=$(grep "8" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
+if [ -z $GETIPV4DNSLISTCHECK8 ]; then
+   #
+   else
+   echo "nameserver 8.8.8.8         # (google-public-dns-a.google.com)" >> /tmp/get_ipv4_resolv.conf
+fi
+
+GETIPV4DNSLISTCHECK9=$(grep "9" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
+if [ -z $GETIPV4DNSLISTCHECK9 ]; then
+   #
+   else
+   echo "nameserver 8.8.4.4         # (google-public-dns-b.google.com)" >> /tmp/get_ipv4_resolv.conf
+fi
+
+cat << DNSENDEOF >> /tmp/get_ipv4_resolv.conf
+#
+### ### ### // GET_IPv4 ### ### ###
+# EOF
+DNSENDEOF
+
+chflags noschg /etc/resolv.conf
+cp -f /tmp/get_ipv4_resolv.conf /etc/resolv.conf
+
+   echo "<--- // prepare /etc/resolv.conf --->"
+
+# <--- --- --- --- // DNS Resolver --- --- --- ---//
+
+### // stage6 ###
 
 ###
 rm -rf /tmp/get_ipv4*
