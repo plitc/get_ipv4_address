@@ -916,7 +916,7 @@ if [ $CLASSCTEST = 0 ]; then
    sort -n $GETIPV4CURRDN42ALISTL $GETIPV4FULLDN42ALISTL | uniq -u > $GETIPV4SORTDN42ALISTL
    nl $GETIPV4SORTDN42ALISTL | sed 's/ //g' > $GETIPV4MENUDN42A
    dialog --menu "Choose one IP:" 45 45 40 `cat $GETIPV4MENUDN42A` 2>$GETIPV4MENUDN42ALIST
-   /usr/local/bin/zsh -c "join <(sort /tmp/get_ipv4_address_menudn42a.log) <(sort /tmp/get_ipv4_address_menudn42alist.log) > /tmp/get_ipv4_address_menudn42a_ip.log"
+   /usr/bin/zsh -c "join <(sort /tmp/get_ipv4_address_menudn42a.log) <(sort /tmp/get_ipv4_address_menudn42alist.log) > /tmp/get_ipv4_address_menudn42a_ip.log"
    SETDN42AIP=$(cat /tmp/get_ipv4_address_menudn42a_ip.log | awk '{print $2}')
    dialog --menu "IP function:" 10 10 10 1 new 2 alias 2>$GETIPV4MENUDN42AIPFUNC
    GETIPV4MENUDN42AIPFUNCN=$(cat $GETIPV4MENUDN42AIPFUNC | sed 's/#//g' | sed 's/%//g')
@@ -958,7 +958,7 @@ echo "Your new IP: $NEWDN42AIP"
    sort -n $GETIPV4CURRALISTL $GETIPV4FULLALISTL | uniq -u > $GETIPV4SORTALISTL
    nl $GETIPV4SORTALISTL | sed 's/ //g' > $GETIPV4MENUA
    dialog --menu "Choose one IP:" 45 45 40 `cat $GETIPV4MENUA` 2>$GETIPV4MENUALIST
-   /usr/local/bin/zsh -c "join <(sort /tmp/get_ipv4_address_menua.log) <(sort /tmp/get_ipv4_address_menualist.log) > /tmp/get_ipv4_address_menua_ip.log"
+   /usr/bin/zsh -c "join <(sort /tmp/get_ipv4_address_menua.log) <(sort /tmp/get_ipv4_address_menualist.log) > /tmp/get_ipv4_address_menua_ip.log"
    SETAIP=$(cat /tmp/get_ipv4_address_menua_ip.log | awk '{print $2}')
    dialog --menu "IP function:" 10 10 10 1 new 2 alias 2>$GETIPV4MENUAIPFUNC
    GETIPV4MENUAIPFUNCN=$(cat $GETIPV4MENUAIPFUNC | sed 's/#//g' | sed 's/%//g')
@@ -998,7 +998,7 @@ echo "Your new IP: $NEWAIP"
    sort -n $GETIPV4CURRBLISTL $GETIPV4FULLBLISTL | uniq -u > $GETIPV4SORTCLISTL
    nl $GETIPV4SORTBLISTL | sed 's/ //g' > $GETIPV4MENUB
    dialog --menu "Choose one IP:" 45 45 40 `cat $GETIPV4MENUB` 2>$GETIPV4MENUBLIST
-   /usr/local/bin/zsh -c "join <(sort /tmp/get_ipv4_address_menub.log) <(sort /tmp/get_ipv4_address_menublist.log) > /tmp/get_ipv4_address_menub_ip.log"
+   /usr/bin/zsh -c "join <(sort /tmp/get_ipv4_address_menub.log) <(sort /tmp/get_ipv4_address_menublist.log) > /tmp/get_ipv4_address_menub_ip.log"
    SETBIP=$(cat /tmp/get_ipv4_address_menub_ip.log | awk '{print $2}')
    dialog --menu "IP function:" 10 10 10 1 new 2 alias 2>$GETIPV4MENUBIPFUNC
    GETIPV4MENUBIPFUNCN=$(cat $GETIPV4MENUBIPFUNC | sed 's/#//g' | sed 's/%//g')
@@ -1038,7 +1038,7 @@ else
    sort -n $GETIPV4CURRCLISTL $GETIPV4FULLCLISTL | uniq -u > $GETIPV4SORTCLISTL
    nl $GETIPV4SORTCLISTL | sed 's/ //g' > $GETIPV4MENUC
    dialog --menu "Choose one IP:" 45 45 40 `cat $GETIPV4MENUC` 2>$GETIPV4MENUCLIST
-   /usr/local/bin/zsh -c "join <(sort /tmp/get_ipv4_address_menuc.log) <(sort /tmp/get_ipv4_address_menuclist.log) > /tmp/get_ipv4_address_menuc_ip.log"
+   /usr/bin/zsh -c "join <(sort /tmp/get_ipv4_address_menuc.log) <(sort /tmp/get_ipv4_address_menuclist.log) > /tmp/get_ipv4_address_menuc_ip.log"
    SETCIP=$(cat /tmp/get_ipv4_address_menuc_ip.log | awk '{print $2}')
    dialog --menu "IP function:" 10 10 10 1 new 2 alias 2>$GETIPV4MENUCIPFUNC
    GETIPV4MENUCIPFUNCN=$(cat $GETIPV4MENUCIPFUNC | sed 's/#//g' | sed 's/%//g')
