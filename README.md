@@ -5,9 +5,11 @@ get ipv4 address for complex bridge zones without dhclient
 
 Dependencies
 ============
+* ifconfig
 * arping
 * arpdig
 * zsh
+* dialog
 
 Features
 ========
@@ -19,6 +21,8 @@ Features
 Platform
 ========
 * FreeBSD
+* Linux
+* --- Debian
 
 Usage
 =====

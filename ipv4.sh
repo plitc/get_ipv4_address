@@ -897,7 +897,7 @@ dialog --inputbox "Enter the interface name:" 8 40 2>$GETIPV4IF
 #
 GETIPV4IFVALUE=$(cat $GETIPV4IF | sed 's/#//g' | sed 's/%//g')
 #
-GETIPV4IFCHECK=$(ifconfig | grep UP | awk '{print $1}' | sed 's/://g' | grep $GETIPV4IFVALUE)
+GETIPV4IFCHECK=$(ifconfig | grep Link | awk '{print $1}' | sed 's/://g' | grep $GETIPV4IFVALUE)
 #
 if [ -z $GETIPV4IFCHECK ]; then
    echo "ERROR: interface doesn't exist or isn't showing up"
@@ -905,10 +905,10 @@ if [ -z $GETIPV4IFCHECK ]; then
 else
    echo "" # dummy
 fi
-### // stage3 ###
+### // stage4 ###
 
 
-### stage4 // ###
+### stage5 // ###
 
    #echo "<--- tcpdump preview // --->"
    #echo ""
