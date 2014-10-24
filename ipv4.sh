@@ -666,7 +666,6 @@ Linux)
 #
 DISTRO=$(uname -a)
 DEBIAN=$(uname -a | awk '{print $6}')
-DEBMYNAME=$(whoami)
 #
 ### // stage1 ###
 
@@ -678,25 +677,9 @@ Debian)
 
 
 
+DEBMYNAME=$(whoami)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### stage1 // ###
+### stage2 // ###
 rm -rf /tmp/get_ipv4*
 #
 GETIPV4="/tmp/get_ipv4_address.log"
@@ -713,7 +696,7 @@ GETIPV4ARPDIG="/tmp/get_ipv4_address_arpdig.log"
 touch $GETIPV4ARPDIG
 #
 ARPING=$(/usr/bin/which arping)
-ARPDIG=$(/usr/bin/which arpdig)
+#ARPDIG=$(/usr/bin/which arpdig)
 DIALOG=$(/usr/bin/which dialog)
 ZSH=$(/usr/bin/which zsh)
 #
@@ -832,11 +815,11 @@ GETIPV4MENUCIPFUNC="/tmp/get_ipv4_address_menuc_ipfunc.log"
 touch $GETIPV4MENUCIPFUNC
 ## // Class C ##
 #
-### // stage1 ###
+### // stage2 ###
 
 
-### stage2 // ###
-if [ $MYNAME = root ]; then
+### stage3 // ###
+if [ $DEBMYNAME = root ]; then
    echo "" # dummy
 else
    echo "<--- --- --->"
