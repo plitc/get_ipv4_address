@@ -350,9 +350,9 @@ echo "Your new IP: $NEWDN42AIP"
 #      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
 #      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
       ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-      ifconfig $GETIPV4IFVALUE inet $SETCIP/24
+      ifconfig $GETIPV4IFVALUE inet $SETAIP/24
    else
-      ifconfig $GETIPV4IFVALUE inet $SETCIP/24 alias  
+      ifconfig $GETIPV4IFVALUE inet $SETAIP/24 alias  
    fi
 ### ### ### ### ### ### ### ### ###
 NEWAIP=$(ifconfig $GETIPV4IFVALUE | grep --color $SETAIP)
@@ -390,9 +390,9 @@ echo "Your new IP: $NEWAIP"
 #      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
 #      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
       ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-      ifconfig $GETIPV4IFVALUE inet $SETCIP/24
+      ifconfig $GETIPV4IFVALUE inet $SETBIP/24
    else   
-      ifconfig $GETIPV4IFVALUE inet $SETCIP/24 alias
+      ifconfig $GETIPV4IFVALUE inet $SETBIP/24 alias
    fi
 ### ### ### ### ### ### ### ### ###
 NEWBIP=$(ifconfig $GETIPV4IFVALUE | grep --color $SETBIP)
@@ -921,19 +921,19 @@ if [ $CLASSCTEST = 0 ]; then
    dialog --menu "IP function:" 10 10 10 1 new 2 alias 2>$GETIPV4MENUDN42AIPFUNC
    GETIPV4MENUDN42AIPFUNCN=$(cat $GETIPV4MENUDN42AIPFUNC | sed 's/#//g' | sed 's/%//g')
    if [ $GETIPV4MENUDN42AIPFUNCN = 1 ]; then
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-      ifconfig $GETIPV4IFVALUE inet $SETDN42AIP/24
+#      ###
+#      ###
+#      ###
+#      ###
+      ip addr flush dev $GETIPV4IFVALUE
+      ip addr add $SETDN42AIP/24 dev $GETIPV4IFVALUE
    else
-      ifconfig $GETIPV4IFVALUE inet $SETDN42AIP/24 alias
+      ip addr add $SETDN42AIP/24 dev $GETIPV4IFVALUE
    fi
 ### ### ### ### ### ### ### ### ###
-NEWDN42AIP=$(ifconfig $GETIPV4IFVALUE | grep --color $SETDN42AIP)
+NEWDN42AIP=$(ip addr show $GETIPV4IFVALUE | grep --color $SETDN42AIP)
 echo ""
-ifconfig $GETIPV4IFVALUE
+ip addr show $GETIPV4IFVALUE
 echo ""
 echo "Your new IP: $NEWDN42AIP"
 ### ### ### ### ### ### ### ### ###
@@ -963,19 +963,19 @@ echo "Your new IP: $NEWDN42AIP"
    dialog --menu "IP function:" 10 10 10 1 new 2 alias 2>$GETIPV4MENUAIPFUNC
    GETIPV4MENUAIPFUNCN=$(cat $GETIPV4MENUAIPFUNC | sed 's/#//g' | sed 's/%//g')
    if [ $GETIPV4MENUCIPFUNCN = 1 ]; then
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-      ifconfig $GETIPV4IFVALUE inet $SETCIP/24
+#      ###
+#      ###
+#      ###
+#      ###
+      ip addr flush dev $GETIPV4IFVALUE
+      ip addr add $SETAIP/24 dev $GETIPV4IFVALUE
    else
-      ifconfig $GETIPV4IFVALUE inet $SETCIP/24 alias  
+      ip addr add $SETAIP/24 dev $GETIPV4IFVALUE
    fi
 ### ### ### ### ### ### ### ### ###
-NEWAIP=$(ifconfig $GETIPV4IFVALUE | grep --color $SETAIP)
+NEWAIP=$(ip addr show $GETIPV4IFVALUE | grep --color $SETAIP)
 echo ""
-ifconfig $GETIPV4IFVALUE
+ip addr show $GETIPV4IFVALUE
 echo ""
 echo "Your new IP: $NEWAIP"
 ### ### ### ### ### ### ### ### ###
@@ -1003,19 +1003,19 @@ echo "Your new IP: $NEWAIP"
    dialog --menu "IP function:" 10 10 10 1 new 2 alias 2>$GETIPV4MENUBIPFUNC
    GETIPV4MENUBIPFUNCN=$(cat $GETIPV4MENUBIPFUNC | sed 's/#//g' | sed 's/%//g')
    if [ $GETIPV4MENUBIPFUNCN = 1 ]; then
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-      ifconfig $GETIPV4IFVALUE inet $SETCIP/24
+#      ###
+#      ###
+#      ###
+#      ###
+      ip addr flush dev $GETIPV4IFVALUE
+      ip addr add $SETBIP/24 dev $GETIPV4IFVALUE
    else   
-      ifconfig $GETIPV4IFVALUE inet $SETCIP/24 alias
+      ip addr add $SETBIP/24 dev $GETIPV4IFVALUE
    fi
 ### ### ### ### ### ### ### ### ###
-NEWBIP=$(ifconfig $GETIPV4IFVALUE | grep --color $SETBIP)
+NEWBIP=$(ip addr show $GETIPV4IFVALUE | grep --color $SETBIP)
 echo ""
-ifconfig $GETIPV4IFVALUE
+ip addr show $GETIPV4IFVALUE
 echo ""
 echo "Your new IP: $NEWBIP"
 ### ### ### ### ### ### ### ### ###
@@ -1043,19 +1043,19 @@ else
    dialog --menu "IP function:" 10 10 10 1 new 2 alias 2>$GETIPV4MENUCIPFUNC
    GETIPV4MENUCIPFUNCN=$(cat $GETIPV4MENUCIPFUNC | sed 's/#//g' | sed 's/%//g')
    if [ $GETIPV4MENUCIPFUNCN = 1 ]; then
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-#      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-      ifconfig $GETIPV4IFVALUE inet -alias 2>&1 > /dev/null
-      ifconfig $GETIPV4IFVALUE inet $SETCIP/24
+#      ###
+#      ###
+#      ###
+#      ###
+      ip addr flush dev $GETIPV4IFVALUE
+      ip addr add $SETCIP/24 dev $GETIPV4IFVALUE
    else
-      ifconfig $GETIPV4IFVALUE inet $SETCIP/24 alias
+      ip addr add $SETCIP/24 dev $GETIPV4IFVALUE
    fi
 ### ### ### ### ### ### ### ### ###
-NEWCIP=$(ifconfig $GETIPV4IFVALUE | grep --color $SETCIP)
+NEWCIP=$(ip addr show $GETIPV4IFVALUE | grep --color $SETCIP)
 echo ""
-ifconfig $GETIPV4IFVALUE
+ip addr show $GETIPV4IFVALUE
 echo ""
 echo "Your new IP: $NEWCIP"
 ### ### ### ### ### ### ### ### ###
@@ -1098,12 +1098,12 @@ done
 
    nl $GETIPV4ROUTER | sed 's/ //g' > $GETIPV4ROUTERLIST
    dialog --menu "Choose one default Router:" 10 30 40 `cat $GETIPV4ROUTERLIST` 2>$GETIPV4ROUTERLISTMENU
-   /usr/local/bin/zsh -c "join <(sort /tmp/get_ipv4_router_list.log) <(sort /tmp/get_ipv4_router_list_menu.log) > /tmp/get_ipv4_router_list_menu_choosed.log"
+   /usr/bin/zsh -c "join <(sort /tmp/get_ipv4_router_list.log) <(sort /tmp/get_ipv4_router_list_menu.log) > /tmp/get_ipv4_router_list_menu_choosed.log"
    SETROUTERIP=$(cat /tmp/get_ipv4_router_list_menu_choosed.log | awk '{print $2}')
 
    echo "<--- set default router // --->"
-   route del -inet default
-   route add -inet default $SETROUTERIP -ifp $GETIPV4IFVALUE
+   route del default
+   route add default gw $SETROUTERIP dev $GETIPV4IFVALUE
    echo "<--- // set default router --->"
 
 # <--- --- --- --- // ROUTER --- --- --- ---//
@@ -1222,11 +1222,11 @@ GETIPV4INFO="/tmp/get_ipv4_info.log"
    echo "" > $GETIPV4INFO
    echo "<--- --- --- INTERFACE --- --- --->" >> $GETIPV4INFO
    echo "" >> $GETIPV4INFO
-   ifconfig $GETIPV4IFVALUE >> $GETIPV4INFO
+   ip addr show $GETIPV4IFVALUE >> $GETIPV4INFO
    echo "" >> $GETIPV4INFO
    echo "<--- --- --- Default v4 Gateway --- --- --->" >> $GETIPV4INFO
    echo "" >> $GETIPV4INFO
-   route show default >> $GETIPV4INFO
+   netstat -rn -4 >> $GETIPV4INFO
    echo "" >> $GETIPV4INFO
    echo "<--- --- --- /etc/resolv.conf --- --- --->" >> $GETIPV4INFO
    echo "" >> $GETIPV4INFO
