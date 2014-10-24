@@ -23,7 +23,7 @@ Platform
 ========
 * FreeBSD
 * Linux
-* --- Debian
+* |---> Debian
 
 Usage
 =====

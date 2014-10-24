@@ -620,7 +620,7 @@ dialog --textbox "$GETIPV4INFO" 0 0
 ### // stage7 ###
 
 ###
-rm -rf /tmp/get_ipv4*
+#rm -rf /tmp/get_ipv4*
 ### // stage4 ###
 
 ### // stage1 ###
@@ -904,8 +904,8 @@ if [ $CLASSCTEST = 0 ]; then
                   echo 'looks like ... DN42 A network'
 # <--- --- --- --- --- --- --- --- ---//
    CLASSDN42ANET=$(cat $GETIPV4 | grep "172.22" | sort | uniq | head -n 1 | cut -c 1-9 | xargs -L1 -I {} echo {}.0/24)
-   # /usr/local/bin/arpdig -i $GETIPV4IFVALUE $CLASSDN42ANET
-   /usr/local/bin/arpdig -i $GETIPV4IFVALUE $CLASSDN42ANET > $GETIPV4ARPDIG
+   # /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSDN42ANET
+   /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSDN42ANET > $GETIPV4ARPDIG
    CLASSDN42APRE=$(cat $GETIPV4 | grep "172.22" | sort | uniq | head -n 1 | cut -c 1-9)
    GETIPV4CURRDN42A=$(cat $GETIPV4ARPDIG | sed '/Digging/d' | awk '{print $1}')
    netdn42a=$CLASSDN42APRE; idn42a=1; GETIPV4FULLDN42A=`while [ $idn42a -lt 255 ]; do echo $netdn42a.$idn42a; idn42a=$(($idn42a+1)); done`
@@ -946,8 +946,8 @@ echo "Your new IP: $NEWDN42AIP"
          echo 'looks like ... class A network'
 # <--- --- --- --- --- --- --- --- ---//
    CLASSANET=$(cat $GETIPV4 | grep "10." | sort | uniq | head -n 1 | cut -c 1-11 | xargs -L1 -I {} echo {}.0/24)
-   # /usr/local/bin/arpdig -i $GETIPV4IFVALUE $CLASSANET  
-   /usr/local/bin/arpdig -i $GETIPV4IFVALUE $CLASSANET > $GETIPV4ARPDIG
+   # /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSANET  
+   /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSANET > $GETIPV4ARPDIG
    CLASSAPRE=$(cat $GETIPV4 | grep "10." | sort | uniq | head -n 1 | cut -c 1-11)
    GETIPV4CURRA=$(cat $GETIPV4ARPDIG | sed '/Digging/d' | awk '{print $1}')
    neta1=$CLASSAPRE; ia1=1; GETIPV4FULLA=`while [ $ia1 -lt 255 ]; do echo $neta1.$ia1; ia1=$(($ia1+1)); done`
@@ -986,8 +986,8 @@ echo "Your new IP: $NEWAIP"
       echo 'looks like ... class B network'
 # <--- --- --- --- --- --- --- --- ---//
    CLASSBNET=$(cat $GETIPV4 | grep "172.16" | sort | uniq | head -n 1 | cut -c 1-11 | xargs -L1 -I {} echo {}.0/24)
-   # /usr/local/bin/arpdig -i $GETIPV4IFVALUE $CLASSBNET
-   /usr/local/bin/arpdig -i $GETIPV4IFVALUE $CLASSBNET > $GETIPV4ARPDIG
+   # /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSBNET
+   /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSBNET > $GETIPV4ARPDIG
    CLASSBPRE=$(cat $GETIPV4 | grep "172.16" | sort | uniq | head -n 1 | cut -c 1-11)
    GETIPV4CURRB=$(cat $GETIPV4ARPDIG | sed '/Digging/d' | awk '{print $1}')
    netb1=$CLASSBPRE; ib1=1; GETIPV4FULLB=`while [ $ib1 -lt 255 ]; do echo $netb1.$ib1; ib1=$(($ib1+1)); done`
@@ -1026,8 +1026,8 @@ else
    echo 'looks like ... class C network'
 # <--- --- --- --- --- --- --- --- ---//
    CLASSCNET=$(cat $GETIPV4 | grep "192.168" | sort | uniq | head -n 1 | cut -c 1-11 | xargs -L1 -I {} echo {}.0/24)
-   # /usr/local/bin/arpdig -i $GETIPV4IFVALUE $CLASSCNET
-   /usr/local/bin/arpdig -i $GETIPV4IFVALUE $CLASSCNET > $GETIPV4ARPDIG
+   # /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSCNET
+   /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSCNET > $GETIPV4ARPDIG
    CLASSCPRE=$(cat $GETIPV4 | grep "192.168" | sort | uniq | head -n 1 | cut -c 1-11)
    GETIPV4CURRC=$(cat $GETIPV4ARPDIG | sed '/Digging/d' | awk '{print $1}')
    netc1=$CLASSCPRE; ic1=1; GETIPV4FULLC=`while [ $ic1 -lt 255 ]; do echo $netc1.$ic1; ic1=$(($ic1+1)); done`
