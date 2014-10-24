@@ -30,11 +30,22 @@
 #
 ### ### ### PLITC // ### ### ###
 
+
 ### stage0 // ###
-rm -rf /tmp/get_ipv4*
 #
+###
 UNAME=$(uname)
 MYNAME=$(whoami)
+###
+
+case $UNAME in
+FreeBSD)
+   ### FreeBSD ###
+### ### ### ### ### ### ### ### ###
+
+
+### stage1 // ###
+rm -rf /tmp/get_ipv4*
 #
 GETIPV4="/tmp/get_ipv4_address.log"
 touch $GETIPV4
@@ -108,6 +119,37 @@ GETIPV4SORTBLISTL="/tmp/get_ipv4_address_sortb.log"
 touch $GETIPV4SORTBLISTL
 GETIPV4MENUB="/tmp/get_ipv4_address_menub.log"
 touch $GETIPV4MENUB
+GETIPV4FULLALIST="/tmp/get_ipv4_address_fulla.log"
+touch $GETIPV4FULLALIST
+GETIPV4CURRALISTL="/tmp/get_ipv4_address_curra_l.log"
+touch $GETIPV4CURRALISTL
+GETIPV4FULLALISTL="/tmp/get_ipv4_address_fulla_l.log"
+touch $GETIPV4FULLALISTL
+GETIPV4SORTALISTL="/tmp/get_ipv4_address_sorta.log"
+touch $GETIPV4SORTALISTL
+GETIPV4MENUA="/tmp/get_ipv4_address_menua.log"
+touch $GETIPV4MENUA
+GETIPV4MENUALIST="/tmp/get_ipv4_address_menualist.log"
+touch $GETIPV4MENUALIST
+GETIPV4MENUALISTIP="/tmp/get_ipv4_address_menua_ip.log"
+touch $GETIPV4MENUALISTIP
+GETIPV4MENUAIPFUNC="/tmp/get_ipv4_address_menua_ipfunc.log"
+touch $GETIPV4MENUAIPFUNC
+## // Class A ##
+#
+## Class B // ##
+GETIPV4CURRBLIST="/tmp/get_ipv4_address_currb.log"
+touch $GETIPV4CURRBLIST
+GETIPV4FULLBLIST="/tmp/get_ipv4_address_fullb.log"
+touch $GETIPV4FULLBLIST
+GETIPV4CURRBLISTL="/tmp/get_ipv4_address_currb_l.log"
+touch $GETIPV4CURRBLISTL
+GETIPV4FULLBLISTL="/tmp/get_ipv4_address_fullb_l.log"
+touch $GETIPV4FULLBLISTL
+GETIPV4SORTBLISTL="/tmp/get_ipv4_address_sortb.log"
+touch $GETIPV4SORTBLISTL
+GETIPV4MENUB="/tmp/get_ipv4_address_menub.log"
+touch $GETIPV4MENUB
 GETIPV4MENUBLIST="/tmp/get_ipv4_address_menublist.log"
 touch $GETIPV4MENUBLIST
 GETIPV4MENUBLISTIP="/tmp/get_ipv4_address_menub_ip.log"
@@ -137,14 +179,7 @@ GETIPV4MENUCIPFUNC="/tmp/get_ipv4_address_menuc_ipfunc.log"
 touch $GETIPV4MENUCIPFUNC
 ## // Class C ##
 #
-### // stage0 ###
-
-
-### stage1 // ###
-case $UNAME in
-FreeBSD)
-   ### FreeBSD ###
-### ### ### ### ### ### ### ### ###
+### // stage1 ###
 
 
 ### stage2 // ###
@@ -607,6 +642,8 @@ dialog --textbox "$GETIPV4INFO" 0 0
 rm -rf /tmp/get_ipv4*
 ### // stage4 ###
 
+### // stage1 ###
+#
 ### ### ### ### ### ### ### ### ###
    ;;
 *)
@@ -617,7 +654,7 @@ rm -rf /tmp/get_ipv4*
    exit 1
    ;;
 esac
-### // stage1 ###
+### // stage0 ###
 
 
 ### ### ### // PLITC ### ### ###
