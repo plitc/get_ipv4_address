@@ -214,14 +214,28 @@ fi
 
 ### stage4 // ###
 
-   echo "<--- tcpdump preview // --->"
-   echo ""
-   /usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 25 | grep --color 0x0800
-   echo ""
-   echo "<--- // tcpdump preview --->"
-   echo ""
-   /usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 25 | grep --color 0x0800 | awk '{print $10}' 2>&1 > $GETIPV4
-   echo ""
+   #echo "<--- tcpdump preview // --->"
+   #echo ""
+   #/usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 25 | grep --color 0x0800
+   #echo ""
+   #echo "<--- // tcpdump preview --->"
+   #echo ""
+   (/usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 25 | grep --color 0x0800 | awk '{print $10}' 2>&1 > $GETIPV4) &&
+   #echo ""
+
+TCPDUMP1=10
+(
+while test $TCPDUMP1 != 110
+do
+echo $TCPDUMP1
+echo "XXX"
+echo "discovering the local network: ($TCPDUMP1 percent)"
+echo "XXX"
+#
+TCPDUMP1=`expr $TCPDUMP1 + 10`
+sleep 1
+done
+) | dialog --title "tcpdump - network discovery" --gauge "discover the local network" 20 70 0
 
 #
 echo "<--- --- --- --- --- --- --- --- --->"
@@ -418,15 +432,29 @@ fi
 
 # <--- --- --- --- ROUTER // --- --- --- ---//
 
-   echo ""
-   echo "<--- ROUTER tcpdump preview // --->"
-   echo ""
-   /usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 55 | grep --color "OSPFv2"
-   echo ""
-   echo "<--- // ROUTER tcpdump preview --->"
-   echo ""
-   /usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 55 | grep --color "OSPFv2" | awk '{print $10}' 2>&1 > $GETIPV4ROUTER
-   echo ""
+   #echo ""
+   #echo "<--- ROUTER tcpdump preview // --->"
+   #echo ""
+   #/usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 55 | grep --color "OSPFv2"
+   #echo ""
+   #echo "<--- // ROUTER tcpdump preview --->"
+   #echo ""
+   (/usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 55 | grep --color "OSPFv2" | awk '{print $10}' 2>&1 > $GETIPV4ROUTER) &&
+   #echo ""
+
+TCPDUMP2=10
+(
+while test $TCPDUMP2 != 110
+do
+echo $TCPDUMP2
+echo "XXX"
+echo "discovering local router: ($TCPDUMP2 percent)"   
+echo "XXX"
+#
+TCPDUMP2=`expr $TCPDUMP2 + 10`
+sleep 1
+done
+) | dialog --title "tcpdump - router discovery" --gauge "discover local router" 20 70 0
 
    nl $GETIPV4ROUTER | sed 's/ //g' > $GETIPV4ROUTERLIST
    dialog --menu "Choose one default Router:" 10 30 40 `cat $GETIPV4ROUTERLIST` 2>$GETIPV4ROUTERLISTMENU
@@ -446,7 +474,7 @@ fi
 
 # <--- --- --- --- DNS Resolver // --- --- --- ---//
 
-   dialog --checklist "Select fanncy Public DNS Resolver:" 30 75 12 \
+   dialog --checklist "Select fancy Public DNS Resolver:" 30 75 12 \
       1 "46.4.163.36    (plitc-public-dns-a.de.plitc.eu / germany only)" off\
       2 "46.4.163.37    (plitc-public-dns-b.de.plitc.eu / germany only)" off\
       3 "46.4.163.38    (plitc-public-dns-c.de.plitc.eu / germany only)" off\
