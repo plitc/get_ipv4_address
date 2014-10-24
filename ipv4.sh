@@ -907,7 +907,7 @@ if [ $CLASSCTEST = 0 ]; then
    # /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSDN42ANET
    /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSDN42ANET > $GETIPV4ARPDIG
    CLASSDN42APRE=$(cat $GETIPV4 | grep "172.22" | sort | uniq | head -n 1 | cut -c 1-9)
-   GETIPV4CURRDN42A=$(cat $GETIPV4ARPDIG | sed '/Digging/d' | awk '{print $1}')
+   GETIPV4CURRDN42A=$(cat $GETIPV4ARPDIG | grep "172.22" | awk '{print $1}' | sort)
    netdn42a=$CLASSDN42APRE; idn42a=1; GETIPV4FULLDN42A=`while [ $idn42a -lt 255 ]; do echo $netdn42a.$idn42a; idn42a=$(($idn42a+1)); done`
    echo $GETIPV4CURRDN42A > $GETIPV4CURRDN42ALIST
    echo $GETIPV4FULLDN42A > $GETIPV4FULLDN42ALIST
@@ -949,7 +949,7 @@ echo "Your new IP: $NEWDN42AIP"
    # /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSANET  
    /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSANET > $GETIPV4ARPDIG
    CLASSAPRE=$(cat $GETIPV4 | grep "10." | sort | uniq | head -n 1 | cut -c 1-11)
-   GETIPV4CURRA=$(cat $GETIPV4ARPDIG | sed '/Digging/d' | awk '{print $1}')
+   GETIPV4CURRA=$(cat $GETIPV4ARPDIG | grep "10." | awk '{print $1}' | sort)
    neta1=$CLASSAPRE; ia1=1; GETIPV4FULLA=`while [ $ia1 -lt 255 ]; do echo $neta1.$ia1; ia1=$(($ia1+1)); done`
    echo $GETIPV4CURRA > $GETIPV4CURRALIST
    echo $GETIPV4FULLA > $GETIPV4FULLALIST
@@ -989,7 +989,7 @@ echo "Your new IP: $NEWAIP"
    # /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSBNET
    /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSBNET > $GETIPV4ARPDIG
    CLASSBPRE=$(cat $GETIPV4 | grep "172.16" | sort | uniq | head -n 1 | cut -c 1-11)
-   GETIPV4CURRB=$(cat $GETIPV4ARPDIG | sed '/Digging/d' | awk '{print $1}')
+   GETIPV4CURRB=$(cat $GETIPV4ARPDIG | grep "172.16" | awk '{print $1}' | sort)
    netb1=$CLASSBPRE; ib1=1; GETIPV4FULLB=`while [ $ib1 -lt 255 ]; do echo $netb1.$ib1; ib1=$(($ib1+1)); done`
    echo $GETIPV4CURRB > $GETIPV4CURRBLIST
    echo $GETIPV4FULLB > $GETIPV4FULLBLIST
@@ -1029,7 +1029,7 @@ else
    # /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSCNET
    /usr/bin/arp-scan -I $GETIPV4IFVALUE $CLASSCNET > $GETIPV4ARPDIG
    CLASSCPRE=$(cat $GETIPV4 | grep "192.168" | sort | uniq | head -n 1 | cut -c 1-11)
-   GETIPV4CURRC=$(cat $GETIPV4ARPDIG | sed '/Digging/d' | awk '{print $1}')
+   GETIPV4CURRC=$(cat $GETIPV4ARPDIG | grep "192.168" | awk '{print $1}' | sort)
    netc1=$CLASSCPRE; ic1=1; GETIPV4FULLC=`while [ $ic1 -lt 255 ]; do echo $netc1.$ic1; ic1=$(($ic1+1)); done`
    echo $GETIPV4CURRC > $GETIPV4CURRCLIST
    echo $GETIPV4FULLC > $GETIPV4FULLCLIST
