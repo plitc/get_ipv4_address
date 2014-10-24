@@ -149,7 +149,7 @@ FreeBSD)
 
 ### stage2 // ###
 if [ $MYNAME = root ]; then
-   # ipv6gw
+   echo "" # dummy
 else
    echo "<--- --- --->"
    echo ""
@@ -165,7 +165,7 @@ if [ -z $ARPING ]; then
    cd -
    echo "<--- --- --->"
 else
-   #
+   echo "" # dummy
 fi
 
 if [ -z $ARPDIG ]; then
@@ -176,7 +176,7 @@ if [ -z $ARPDIG ]; then
    cd -
    echo "<--- --- --->"
 else
-   #
+   echo "" # dummy
 fi
 
 if [ -z $ZSH ]; then
@@ -187,7 +187,7 @@ if [ -z $ZSH ]; then
    cd -
    echo "<--- --- --->"
 else
-   #
+   echo "" # dummy
 fi
 ### // stage2 ###
 
@@ -207,7 +207,7 @@ if [ -z $GETIPV4IFCHECK ]; then
    echo "ERROR: interface doesn't exist or isn't showing up"
    exit 1
 else
-   #
+   echo "" # dummy
 fi
 ### // stage3 ###
 
@@ -456,6 +456,10 @@ sleep 1
 done
 ) | dialog --title "tcpdump - router discovery" --gauge "discover local router" 20 70 0
 
+
+
+
+
    nl $GETIPV4ROUTER | sed 's/ //g' > $GETIPV4ROUTERLIST
    dialog --menu "Choose one default Router:" 10 30 40 `cat $GETIPV4ROUTERLIST` 2>$GETIPV4ROUTERLISTMENU
    /usr/local/bin/zsh -c "join <(sort /tmp/get_ipv4_router_list.log) <(sort /tmp/get_ipv4_router_list_menu.log) > /tmp/get_ipv4_router_list_menu_choosed.log"
@@ -495,63 +499,63 @@ DNSEOF
 
 GETIPV4DNSLISTCHECK1=$(grep "1" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
 if [ -z $GETIPV4DNSLISTCHECK1 ]; then
-   #
+   echo "" # dummy
    else
    echo "nameserver 46.4.163.36     # (plitc-public-dns-a.de.plitc.eu / germany only)" >> /tmp/get_ipv4_resolv.conf
 fi
 
 GETIPV4DNSLISTCHECK2=$(grep "2" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
 if [ -z $GETIPV4DNSLISTCHECK2 ]; then
-   #
+   echo "" # dummy
    else
    echo "nameserver 46.4.163.37     # (plitc-public-dns-b.de.plitc.eu / germany only)" >> /tmp/get_ipv4_resolv.conf
 fi
 
 GETIPV4DNSLISTCHECK3=$(grep "3" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
 if [ -z $GETIPV4DNSLISTCHECK3 ]; then
-   #
+   echo "" # dummy
    else
    echo "nameserver 46.4.163.38     # (plitc-public-dns-c.de.plitc.eu / germany only)" >> /tmp/get_ipv4_resolv.conf
 fi
 
 GETIPV4DNSLISTCHECK4=$(grep "4" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
 if [ -z $GETIPV4DNSLISTCHECK4 ]; then
-   #
+   echo "" # dummy
    else
    echo "nameserver 213.73.91.35    # (dnscache.berlin.ccc.de)" >> /tmp/get_ipv4_resolv.conf
 fi
 
 GETIPV4DNSLISTCHECK5=$(grep "5" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
 if [ -z $GETIPV4DNSLISTCHECK5 ]; then
-   #
+   echo "" # dummy
    else
    echo "nameserver 74.82.42.42     # (ordns.he.net)" >> /tmp/get_ipv4_resolv.conf
 fi
 
 GETIPV4DNSLISTCHECK6=$(grep "6" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
 if [ -z $GETIPV4DNSLISTCHECK6 ]; then
-   #
+   echo "" # dummy
    else
    echo "nameserver 208.67.222.222  # (resolver1.opendns.com)" >> /tmp/get_ipv4_resolv.conf
 fi
 
 GETIPV4DNSLISTCHECK7=$(grep "7" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
 if [ -z $GETIPV4DNSLISTCHECK7 ]; then
-   #
+   echo "" # dummy
    else
    echo "nameserver 208.67.220.220  # (resolver2.opendns.com)" >> /tmp/get_ipv4_resolv.conf
 fi
 
 GETIPV4DNSLISTCHECK8=$(grep "8" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
 if [ -z $GETIPV4DNSLISTCHECK8 ]; then
-   #
+   echo "" # dummy
    else
    echo "nameserver 8.8.8.8         # (google-public-dns-a.google.com)" >> /tmp/get_ipv4_resolv.conf
 fi
 
 GETIPV4DNSLISTCHECK9=$(grep "9" $GETIPV4DNSLIST | sed 's/#//g' | sed 's/%//g')
 if [ -z $GETIPV4DNSLISTCHECK9 ]; then
-   #
+   echo "" # dummy
    else
    echo "nameserver 8.8.4.4         # (google-public-dns-b.google.com)" >> /tmp/get_ipv4_resolv.conf
 fi
