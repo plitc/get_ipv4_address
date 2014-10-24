@@ -848,6 +848,10 @@ fi
 
 ### stage5 // ###
 
+### kill dhclient // ###
+killall -q dhclient
+### // kill dhclient ###
+
    #echo "<--- tcpdump preview // --->"
    #echo ""
    #/usr/sbin/tcpdump -e -n -i $GETIPV4IFVALUE -c 25 | grep --color 0x0800
