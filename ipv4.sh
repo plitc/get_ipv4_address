@@ -701,6 +701,7 @@ ARPING=$(/usr/bin/which arping)
 #ARPDIG=$(/usr/bin/which arpdig)
 DIALOG=$(/usr/bin/which dialog)
 ZSH=$(/usr/bin/which zsh)
+IFCONFIG=$(/usr/bin/which ifconfig)
 #
 ## DN42a // ##
 GETIPV4CURRDN42ALIST="/tmp/get_ipv4_address_currdn42a.log"
@@ -868,6 +869,17 @@ if [ -z $ZSH ]; then
    echo "need zsh shell"
    echo "<--- --- --->"
    apt-get install -y zsh
+   cd -
+   echo "<--- --- --->"
+else
+   echo "" # dummy
+fi
+
+if [ -z $IFCONFIG ]; then
+   echo "<--- --- --->"
+   echo "need ifconfig"
+   echo "<--- --- --->"
+   apt-get install -y ifconfig
    cd -
    echo "<--- --- --->"
 else
