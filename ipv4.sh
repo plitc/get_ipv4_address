@@ -671,6 +671,7 @@ ARPSCAN=$(/usr/bin/which arp-scan)
 DIALOG=$(/usr/bin/which dialog)
 ZSH=$(/usr/bin/which zsh)
 IFCONFIG=$(/usr/bin/which ifconfig)
+TCPDUMP=$(/usr/bin/which tcpdump)
 #
 ## DN42a // ##
 GETIPV4CURRDN42ALIST="/tmp/get_ipv4_address_currdn42a.log"
@@ -823,6 +824,18 @@ if [ -z $IFCONFIG ]; then
 else
    echo "" # dummy
 fi
+
+if [ -z $TCPDUMP ]; then
+    echo "<--- --- --->"
+    echo "need tcpdump"
+    echo "<--- --- --->"
+    apt-get install -y tcpdump
+    cd -
+    echo "<--- --- --->"
+else
+    echo "" # dummy
+fi
+#
 ### // stage3 ###
 
 
@@ -1206,7 +1219,7 @@ cat << DNSENDEOF >> /tmp/get_ipv4_resolv.conf
 # EOF
 DNSENDEOF
 
-chflags noschg /etc/resolv.conf
+chattr -i /etc/resolv.conf
 cp -f /tmp/get_ipv4_resolv.conf /etc/resolv.conf
 
    echo "<--- // prepare /etc/resolv.conf --->"

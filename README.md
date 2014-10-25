@@ -9,6 +9,7 @@ Dependencies
 * arping
 * arpdig     (FreeBSD)
 * arp-scan   (Linux)
+* tcpdump    (Linux)
 * zsh
 * dialog
 
